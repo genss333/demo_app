@@ -1,7 +1,10 @@
-import 'package:demo_app/pages/home/components/confirm_data.dart';
-import 'package:demo_app/pages/home/components/register.dart';
+import 'package:demo_app/pages/user_list/user_list_screen.dart';
 import 'package:demo_app/widgets/full_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'components/confirm_data.dart';
+import 'components/register.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,6 +35,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: const Icon(Icons.arrow_back),
               ),
         title: const Text("Home"),
+        actions: [
+          IconButton(
+            onPressed: _onGoToUserList,
+            icon: const Icon(Icons.people),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -54,5 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       selectedIndex = 1;
     });
+  }
+
+  void _onGoToUserList() {
+    Get.to(() => const UserListScreen());
   }
 }
